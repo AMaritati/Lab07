@@ -39,6 +39,26 @@ public class FXMLController {
 
     @FXML
     void doWorst(ActionEvent event) {
+    	int years = 0;
+    	int hours = 0;
+    	Nerc nerc = comboNerc.getValue();
+
+    	// controllo sulle stringhe se sono numeri interi  	
+    	if (this.model.controllaTxt(txtYears.getText())) {
+    		years = Integer.parseInt(txtYears.getText());
+    	}
+    	else {
+    		txtResult.setText("NON HAI INSERITO UN NUMERO VALIDO DI ANNI");
+    		return;
+    	}
+    	
+    	if (this.model.controllaTxt(txtHours.getText())) {
+    		hours = Integer.parseInt(txtHours.getText());
+    	}
+    	else {
+    		txtResult.setText("NON HAI INSERITO UN NUMERO VALIDO DI MESI");
+    		return;
+    	}
 
     }
 
