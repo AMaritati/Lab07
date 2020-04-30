@@ -1,5 +1,6 @@
 package it.polito.tdp.poweroutages.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.polito.tdp.poweroutages.DAO.PowerOutageDAO;
@@ -14,6 +15,21 @@ public class Model {
 	
 	public List<Nerc> getNercList() {
 		return podao.getNercList();
+	}
+	
+	public List<PowerOutages> getPowerOutages(Nerc nerc){
+		return podao.getPowerOutages(nerc);
+	}
+	
+	// creo un metodo di anno massimo
+	public int annoMax(List<PowerOutages> powerOutages) {
+		int bestAnno = 0;
+		for(PowerOutages p : powerOutages) {
+			if(p.getDataInizio().getYear()>bestAnno) {
+				bestAnno = p.getDataInizio().getYear();
+			}
+		}
+		return bestAnno;
 	}
 	
 	/**

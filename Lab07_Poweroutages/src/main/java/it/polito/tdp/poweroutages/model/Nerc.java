@@ -6,9 +6,22 @@ public class Nerc {
 	private int id;
 	private String value;
 
+	/**
+	 * Costruttore 
+	 * @param id
+	 * @param value
+	 */
 	public Nerc(int id, String value) {
 		this.id = id;
 		this.value = value;
+	}
+	
+	/**
+	 * Costruttore lazy
+	 * @param id
+	 */
+	public Nerc (int id) {
+		this.id = id;
 	}
 
 	public int getId() {

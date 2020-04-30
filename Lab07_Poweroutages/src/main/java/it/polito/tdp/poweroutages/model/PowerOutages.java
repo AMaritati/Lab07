@@ -1,6 +1,5 @@
 package it.polito.tdp.poweroutages.model;
 
-import java.util.List;
 import java.time.LocalDateTime;
 
 public class PowerOutages {
@@ -9,14 +8,18 @@ public class PowerOutages {
 	private int customers;
 	private LocalDateTime dataInizio;
 	private LocalDateTime dataFine;
+	private double ore;
 	
-	public PowerOutages(int id, Nerc nerc, int customers, LocalDateTime dataInizio, LocalDateTime dataFine) {
+
+	public PowerOutages(int id, Nerc nerc, int customers, LocalDateTime dataInizio, LocalDateTime dataFine,
+			double ore) {
 		
 		this.id = id;
 		this.nerc = nerc;
 		this.customers = customers;
 		this.dataInizio = dataInizio;
 		this.dataFine = dataFine;
+		this.ore = ore;
 	}
 
 	public int getId() {
@@ -59,6 +62,14 @@ public class PowerOutages {
 		this.dataFine = dataFine;
 	}
 
+	public double getOre() {
+		return ore;
+	}
+
+	public void setOre(double ore) {
+		this.ore = ore;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,8 +91,14 @@ public class PowerOutages {
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return id + ", " + nerc + ", " + customers + ", " + dataInizio
+				+ ", " + dataFine + ", " + ore ;
+	}
+
+
 	
 	
 
