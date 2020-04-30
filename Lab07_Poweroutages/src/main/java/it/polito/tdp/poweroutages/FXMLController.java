@@ -1,10 +1,12 @@
 package it.polito.tdp.poweroutages;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.poweroutages.model.Model;
 import it.polito.tdp.poweroutages.model.Nerc;
+import it.polito.tdp.poweroutages.model.PowerOutages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,6 +41,8 @@ public class FXMLController {
 
     @FXML
     void doWorst(ActionEvent event) {
+    	txtResult.clear();
+    	
     	int years = 0;
     	int hours = 0;
     	Nerc nerc = comboNerc.getValue();
@@ -58,6 +62,17 @@ public class FXMLController {
     	else {
     		txtResult.setText("NON HAI INSERITO UN NUMERO VALIDO DI MESI");
     		return;
+    	}
+   
+    	List<PowerOutages> p = this.model.funzioneMax(nerc, years, hours);
+    	double oreTot = this.model.getSommaOre(p);
+    	int customers = this.model.getSomma(p);
+    	
+    	txtResult.appendText("Tot people affected: "+ customers+"\n");
+    	txtResult.appendText("Tot hours of outage: "+ oreTot+"\n");
+    	
+    	for (PowerOutages pp : p) {
+    		txtResult.appendText(pp.toString()+"\n");
     	}
 
     }

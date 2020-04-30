@@ -62,11 +62,6 @@ public List<PowerOutages> funzioneMax(Nerc nerc, int years, int hours) {
 			return;
 		}
 		  
-		/*  // controllo lasso di tempo
-		if (!controlloAnno(parziale)) {
-			return;
-		}
-		*/
 		if (getSomma(parziale)>maxCustomers) {
 			maxCustomers=getSomma(parziale);
 			bestSoluzione = new ArrayList<>(parziale);
@@ -87,7 +82,7 @@ public List<PowerOutages> funzioneMax(Nerc nerc, int years, int hours) {
 	}
 
 
-	private int getSomma(List<PowerOutages> parziale) {
+	public int getSomma(List<PowerOutages> parziale) {
 		
 		int somma = 0;
 		
@@ -116,18 +111,7 @@ public List<PowerOutages> funzioneMax(Nerc nerc, int years, int hours) {
 		}
 		return bestAnno;
 	}
-	
-	/*public List<PowerOutages> scremaList(List<PowerOutages> temp){
-		int max = annoMax(temp);
-		for(PowerOutages p : temp) {
-			if( p!=null && max-p.getDataInizio().getYear()<=this.maxYears) {
-				powerOutages.add(p);
-			}
-		}
-		
-		return powerOutages;
-	}
-	*/
+
 	/**
 	 * Metodo per il controllo di inserimento cifre
 	 * @param p Stringa in input
