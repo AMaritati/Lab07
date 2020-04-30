@@ -13,14 +13,12 @@ public class Ricerca {
 	private int maxHours;
 	
 	public Ricerca() {
-		powerOutages = new ArrayList<>();
-		bestSoluzione = null;
 		m = new Model();
 	}
 
 	public List<PowerOutages> funzioneMax(Nerc nerc, int years, int hours) {
 	    
-		powerOutages = m.getPowerOutages(nerc);
+		powerOutages = new ArrayList<>(m.getPowerOutages(nerc));
 		bestSoluzione = new ArrayList<>();
 		
 		maxCustomers = 0;
@@ -65,7 +63,7 @@ public class Ricerca {
 		cerca(parziale,livello+1);
 		parziale.remove(powerOutages.get(livello));
 		
-		
+		cerca(parziale, livello + 1);
 		
 	}
 
@@ -83,7 +81,7 @@ public class Ricerca {
 	
 		
 		
-	public boolean controlloAnno(List<PowerOutages> parziale) {
+	/*public boolean controlloAnno(List<PowerOutages> parziale) {
 		int anno = m.annoMax(this.powerOutages);
 		boolean flag = false;
 		for (PowerOutages p : parziale) {
@@ -96,14 +94,15 @@ public class Ricerca {
 		}
 		return flag;
 	}
+	*/
 
 	public double getSommaOre(List<PowerOutages> parziale) {
-		
+		sommaOre = 0;
 		for (PowerOutages p : parziale) {
-			this.sommaOre+=p.getOre();
+			sommaOre+=p.getOre();
 			}
 		
-		return this.sommaOre;
+		return sommaOre;
 	}
 
 

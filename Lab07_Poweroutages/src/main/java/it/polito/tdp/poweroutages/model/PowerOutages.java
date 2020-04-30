@@ -94,10 +94,8 @@ public class PowerOutages {
 
 	@Override
 	public String toString() {
-		return id + ", " + nerc + ", " + customers + ", " + dataInizio
-				+ ", " + dataFine + ", " + ore ;
+		return String.format("%-20s %-20s %-10s %-20s", dataInizio, dataFine, ore, customers);
 	}
-
 
 	
 	

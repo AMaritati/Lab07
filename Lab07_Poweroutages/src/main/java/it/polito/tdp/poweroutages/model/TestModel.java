@@ -1,5 +1,6 @@
 package it.polito.tdp.poweroutages.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestModel {
@@ -7,18 +8,37 @@ public class TestModel {
 	public static void main(String[] args) {
 		
 		Model model = new Model();
-		Ricerca r = new Ricerca();
+		
 		Nerc nerc = new Nerc (3,"MAAC");
 		System.out.println(model.getNercList());
-		List<PowerOutages> l = model.getPowerOutages(nerc);
-		System.out.println(model.annoMax(l));
+	
 		
-		System.out.println(r.controlloAnno(l));
-
-		for (PowerOutages a : l) {
-			System.out.println(a.toString());
+		/*int maxYears = 2;
+		List<PowerOutages> po = model.getPowerOutages(nerc);
+		//System.out.println(po);
+		List<PowerOutages> po1 = new ArrayList<>();
+		int max = model.annoMax(po);
+		for(PowerOutages p : po) {
+			if(max-p.getDataInizio().getYear()<=maxYears) {
+				po1.add(p);
+			}
 		}
 		
+		System.out.println(po1);
+		
+		//System.out.println(model.scremaList(model.getPowerOutages(nerc)));*/
+		
+		
+		
+		//System.out.println(model.getPowerOutages(nerc));
+		List<PowerOutages> slz = new ArrayList<>(model.funzioneMax(nerc, 4,200));
+		
+	
+		for(PowerOutages p : slz) {
+			System.out.println(p);
+		}
+			
+	System.out.println(slz.size());
 		
 		
 	}
